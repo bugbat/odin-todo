@@ -1,8 +1,15 @@
-export default function addTask(name, description) {
+export function addTask(task) {
   const tasklist = document.querySelector('#tasklist');
-  const task = document.createElement('p');
-  task.textContent = name + description;
-  tasklist.appendChild(task);
-  console.log('function go');
-  return;
+  const thisTask = document.createElement('div');
+  const thisTaskDetails = document.createElement('p');
+  thisTaskDetails.textContent = task.title + ' ' + task.desc;
+
+  const deleteThisTask = document.createElement('button');
+  deleteThisTask.textContent = 'X';
+  deleteThisTask.addEventListener('click', function() {
+    deleteThisTask.parentElement.remove();
+  });
+  
+  thisTask.append(thisTaskDetails, deleteThisTask)
+  tasklist.appendChild(thisTask);
 }

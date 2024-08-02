@@ -7,9 +7,21 @@
 </head>
 <body>
   <div id="tasklist"></div>
-  <div class="new-task">
-    <input type="text" name="task-title">
-    <input type="text" name="task-description">
+  <div id="new-task">
+    <form name="new-task">
+      <label for="task-title">Title: </label>
+      <input type="text" name="task-title" id="task-title" required>
+      <label for="task-description">Description: </label>
+      <input type="text" name="task-description" id="task-description">
+      <label for="due-date">Due Date: </label>
+      <input type="text" name="due-date" id="due-date">
+      <label for="priority">Priority: </label>
+      <select name="priority" id="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </form>
     <button name="add-task">Add</button>
   </div>
 </body>
