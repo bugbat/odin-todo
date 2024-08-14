@@ -12,6 +12,5 @@ export function taskList(title) {
   const removeTask = (index) => {
     delete tasks[index]
   }
-
   return { tasks, getTitle, getTasks, addTask, removeTask }
 }
