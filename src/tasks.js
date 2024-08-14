@@ -5,10 +5,13 @@ export function task(title, desc, date, priority, taskList) {
 export function taskList(title) {
   let tasks = [];
   const getTitle = () => title;
+  const getTasks = () => tasks;
   const addTask = (task) => {
     tasks.push(task);
   };
-  return { tasks, getTitle, addTask }
-}
+  const removeTask = (index) => {
+    delete tasks[index]
+  }
 
-export let taskLists = [];
+  return { tasks, getTitle, getTasks, addTask, removeTask }
+}
