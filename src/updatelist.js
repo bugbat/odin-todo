@@ -4,8 +4,17 @@ export function updateTaskList(taskList) {
 
   taskList.getTasks().forEach(task => {
     const thisTask = document.createElement('div');
-    const thisTaskDetails = document.createElement('p');
-    thisTaskDetails.textContent = task.title + ' ' + task.desc + ' ' + task.taskList;
+    thisTask.id = 'task';
+    const thisTaskTitle = document.createElement('p');
+    thisTaskTitle.textContent = task.title;
+    const thisTaskDescription = document.createElement('p');
+    thisTaskDescription.textContent = task.desc;
+    const thisTaskList = document.createElement('p');
+    thisTaskList.textContent = task.taskList;
+    const thisTaskDate = document.createElement('p');
+    thisTaskDate.textContent = task.date;
+    const thisTaskPriority = document.createElement('p');
+    thisTaskPriority.textContent = task.priority;
   
     const deleteThisTask = document.createElement('button');
     deleteThisTask.textContent = 'X';
@@ -13,7 +22,7 @@ export function updateTaskList(taskList) {
       taskList.removeTask(taskList.getTasks().indexOf(task));
       deleteThisTask.parentElement.remove();
     });
-    thisTask.append(thisTaskDetails, deleteThisTask)
+    thisTask.append(thisTaskTitle, thisTaskDescription, thisTaskDate, thisTaskPriority, thisTaskList, deleteThisTask)
     div_taskList.appendChild(thisTask);
   });
 }

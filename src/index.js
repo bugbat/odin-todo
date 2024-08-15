@@ -1,4 +1,5 @@
 // import _ from 'date-fns';
+import styles from './style.css'
 import { task, taskList } from './tasks';
 import { updateTaskList } from './updatelist'
 
@@ -22,8 +23,6 @@ projects.forEach(project => {
 projectDropdown.addEventListener('change', function () {
   const selectedValue = projectDropdown.value;
   const newSelection = projects.find((p) => p.getTitle() === selectedValue);
-
-
   if (newSelection) {
     selectedProject = newSelection;
   };
@@ -31,15 +30,18 @@ projectDropdown.addEventListener('change', function () {
 
 // add new task button
 btnAddTask.addEventListener('click', function() {
-  const newTask = task(
-    document.querySelector("input[name='task-title']").value,
-    document.querySelector("input[name='task-description']").value,
-    document.querySelector("input[name='due-date']").value,
-    document.querySelector("select[name='priority']").value,
-    selectedProject.getTitle()
-  );
+  if (document.querySelector("input[name='task-title']").value) {
+    const newTask = task(
+      document.querySelector("input[name='task-title']").value,
+      document.querySelector("input[name='task-description']").value,
+      document.querySelector("input[name='due-date']").value,
+      document.querySelector("select[name='priority']").value,
+      selectedProject.getTitle()
+    );
+    selectedProject.addTask(newTask);
+    updateTaskList(selectedProject);
+    newTaskForm.reset();
+  }
+  
 
-  selectedProject.addTask(newTask);
-  updateTaskList(selectedProject);
-  newTaskForm.reset();
 });

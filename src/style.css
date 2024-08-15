@@ -1,0 +1,8 @@
+#task {
+  display: grid;
+  grid-template-columns: 1fr 1fr  1fr  1fr  1fr 1fr;
+}
+#tasklist {
+  display: grid;
+  grid-template-columns: 75rem;
+}
