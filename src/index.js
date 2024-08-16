@@ -1,4 +1,4 @@
-// import _ from 'date-fns';
+import format from 'date-fns';
 import styles from './style.css'
 import { task, taskList } from './tasks';
 import { updateTaskList } from './updatelist'
@@ -26,6 +26,7 @@ projectDropdown.addEventListener('change', function () {
   if (newSelection) {
     selectedProject = newSelection;
   };
+  updateTaskList(selectedProject);
 });
 
 // add new task button
@@ -42,6 +43,4 @@ btnAddTask.addEventListener('click', function() {
     updateTaskList(selectedProject);
     newTaskForm.reset();
   }
-  
-
 });

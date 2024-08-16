@@ -1,10 +1,10 @@
 export function updateTaskList(taskList) {
-  const div_taskList = document.querySelector('#tasklist');
+  const div_taskList = document.querySelector('#tasklistcontent');
   div_taskList.innerHTML = "";
 
   taskList.getTasks().forEach(task => {
     const thisTask = document.createElement('div');
-    thisTask.id = 'task';
+    thisTask.classList.add('task');
     const thisTaskTitle = document.createElement('p');
     thisTaskTitle.textContent = task.title;
     const thisTaskDescription = document.createElement('p');
@@ -17,6 +17,7 @@ export function updateTaskList(taskList) {
     thisTaskPriority.textContent = task.priority;
   
     const deleteThisTask = document.createElement('button');
+    deleteThisTask.classList.add('deletebutton');
     deleteThisTask.textContent = 'X';
     deleteThisTask.addEventListener('click', function() {
       taskList.removeTask(taskList.getTasks().indexOf(task));

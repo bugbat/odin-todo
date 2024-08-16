@@ -10,8 +10,17 @@
     <select name="project" id="project">
     </select>
   </div>
+
   <div id="tasklist">
-    
+    <div id="tasklisthead">
+      <p>Name</p>
+      <p>Description</p>
+      <p>Due Date</p>
+      <p>Priority</p>
+      <p>Project</p>
+      <p>Delete?</p>
+    </div>
+    <div id="tasklistcontent"></div>
   </div>
   <div id="new-task">
     <form name="new-task">
@@ -20,7 +29,7 @@
       <label for="task-description">Description: </label>
       <input type="text" name="task-description" id="task-description">
       <label for="due-date">Due Date: </label>
-      <input type="text" name="due-date" id="due-date">
+      <input type="date" name="due-date" id="due-date">
       <label for="priority">Priority: </label>
       <select name="priority" id="priority">
         <option value="Low">Low</option>

@@ -1,8 +1,39 @@
-#task {
+.task {
   display: grid;
   grid-template-columns: 1fr 1fr  1fr  1fr  1fr 1fr;
+  background-color: beige;
+  align-items: center;
 }
+
+.task:nth-child(2n) {
+  background-color: antiquewhite;
+}
+
+.task p {
+  padding: .5rem;
+}
+
+#tasklisthead {
+  padding: .75rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr  1fr  1fr  1fr 1fr;
+  background-color: gainsboro;
+  font-weight: bold;
+}
+
+#tasklistcontent {
+  padding: .25rem;
+  background-color: gainsboro;
+  display: grid;
+  row-gap: .25rem;
+}
+
 #tasklist {
   display: grid;
   grid-template-columns: 75rem;
+}
+
+.deletebutton {
+  width: 2rem;
+  height: 2rem;
 }
