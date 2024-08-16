@@ -1,4 +1,4 @@
-import format from 'date-fns';
+import format from 'date-fns/format';
 import styles from './style.css'
 import { task, taskList } from './tasks';
 import { updateTaskList } from './updatelist'
@@ -6,8 +6,14 @@ import { updateTaskList } from './updatelist'
 const newTaskForm = document.querySelector("form[name='new-task']")
 const btnAddTask = document.querySelector("button[name='add-task']");
 
+//set date picker default to today
+const date = document.querySelector("input[name='due-date']");
+const today = new Date();
+date.valueAsDate = today;
+
 let projects = [taskList('Default'), taskList('Second')];
 let selectedProject = projects[0];
+updateTaskList(selectedProject);
 
 const projectDropdown = document.querySelector("select[name='project']");
 
@@ -35,12 +41,13 @@ btnAddTask.addEventListener('click', function() {
     const newTask = task(
       document.querySelector("input[name='task-title']").value,
       document.querySelector("input[name='task-description']").value,
-      document.querySelector("input[name='due-date']").value,
+      format(new Date(document.querySelector("input[name='due-date']").value), "MM/dd/yyyy"),
       document.querySelector("select[name='priority']").value,
       selectedProject.getTitle()
     );
     selectedProject.addTask(newTask);
     updateTaskList(selectedProject);
     newTaskForm.reset();
+    date.valueAsDate = today;
   }
 });
