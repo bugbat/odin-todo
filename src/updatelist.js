@@ -3,9 +3,9 @@ export function updateTaskList(taskList) {
   div_taskList.innerHTML = "";
 
   if (taskList.getTasks() == false) {
-    const thisTask = document.createElement('p');
-    thisTask.textContent = 'Add a task to get started';
-    div_taskList.appendChild(thisTask);
+    const getStarted = document.createElement('p');
+    getStarted.textContent = 'Add a task to get started!';
+    div_taskList.appendChild(getStarted);
   }
   else {
     taskList.getTasks().forEach(task => {
