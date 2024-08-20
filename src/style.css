@@ -1,6 +1,30 @@
+#top {
+  display: flex;
+  gap: 1rem;
+}
+
+.topitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.newproject {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.createproject {
+  display: none;
+  align-items: end;
+  gap: 1rem;
+}
+
 .task {
   display: grid;
   grid-template-columns: 1fr 1fr  1fr  1fr  1fr 1fr;
+  gap: 1rem;
   background-color: beige;
   align-items: center;
 }
@@ -12,10 +36,19 @@
 .task p {
 }
 
+.getstarted {
+  font-weight: bold;
+  background-color: rgb(209, 255, 178);
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
 #tasklisthead {
   padding: .75rem;
   display: grid;
   grid-template-columns: 1fr 1fr  1fr  1fr  1fr 1fr;
+  gap: 1rem;
   background-color: gainsboro;
   font-weight: bold;
 }
@@ -29,10 +62,27 @@
 
 #tasklist {
   display: grid;
-  grid-template-columns: 75rem;
+  grid-template-columns: 1fr;
 }
 
 .deletebutton {
   width: 2rem;
+  height: 2rem;
+}
+
+#taskform > form {
+  display: grid;
+  grid-template-columns: 1fr 1fr  1fr  1fr  1fr 1fr;
+  align-items: end;
+  gap: 1rem;
+}
+
+.formfield {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+form > button {
+  width: 5rem;
   height: 2rem;
 }

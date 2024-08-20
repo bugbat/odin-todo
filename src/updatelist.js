@@ -1,16 +1,18 @@
-export function updateTaskList(taskList) {
+import { myProjects } from "./tasks";
+
+export function updateTaskList(project) {
   const div_taskList = document.querySelector('#tasklistcontent');
   div_taskList.innerHTML = "";
 
-  if (taskList.getTasks() == false) {
+  if (project.getTasks() == false) {
     const getStarted = document.createElement('p');
+    getStarted.classList.add("getstarted");
     getStarted.textContent = 'Add a task to get started!';
     div_taskList.appendChild(getStarted);
   }
-  else {
-    taskList.getTasks().forEach(task => {
-      console.log('some')
 
+  else {
+    project.getTasks().forEach(task => {
       const thisTask = document.createElement('div');
       thisTask.classList.add('task');
       const thisTaskTitle = document.createElement('p');
@@ -35,4 +37,31 @@ export function updateTaskList(taskList) {
       div_taskList.appendChild(thisTask);
     });
   }
+}
+
+export function updateProjectDropdown() {
+  const projectDropdown = document.querySelector("select[name='project']");
+  projectDropdown.innerHTML = '';
+  myProjects.getList().forEach(project => {
+    let projectEntry = document.createElement('option');
+    projectEntry.value = project.getTitle();
+    projectEntry.textContent = project.getTitle();
+    projectDropdown.appendChild(projectEntry);
+  });
+  setDropdownEvents();
+}
+
+function setDropdownEvents() {
+  const projectDropdown = document.querySelector("select[name='project']");
+  projectDropdown.addEventListener('change', function () {
+    const selectedValue = projectDropdown.value;
+    const newSelection = myProjects.getList().find((p) => p.getTitle() === selectedValue);
+    console.log(newSelection.getTitle())
+    if (newSelection) {
+      console.log('new selection set')
+      myProjects.setSelection(newSelection);
+    };
+    updateTaskList(myProjects.getSelected());
+  });
+  
 }

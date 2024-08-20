@@ -1,37 +1,19 @@
 import { setTodaysDate } from './setdate'
 import format from 'date-fns/format';
 import styles from './style.css'
-import { task, taskList } from './tasks';
-import { updateTaskList } from './updatelist'
+import { task, myProjects } from './tasks';
+import { updateTaskList, updateProjectDropdown } from './updatelist'
+import { createProjectModal } from './addproject';
 
-const newTaskForm = document.querySelector("form[name='new-task']")
+const newTaskForm = document.querySelector("form[name='taskform']")
 const btnAddTask = document.querySelector("button[name='add-task']");
 
+createProjectModal();
 setTodaysDate();
+updateProjectDropdown();
+updateTaskList(myProjects.getSelected());
 
-let projects = [taskList('Default'), taskList('Second')];
-let selectedProject = projects[0];
-updateTaskList(selectedProject);
-
-const projectDropdown = document.querySelector("select[name='project']");
-
-// populate project list dropdown
-projects.forEach(project => {
-  let projectEntry = document.createElement('option');
-  projectEntry.value = project.getTitle();
-  projectEntry.textContent = project.getTitle();
-  projectDropdown.appendChild(projectEntry);
-});
-
-// handle dropdown selection
-projectDropdown.addEventListener('change', function () {
-  const selectedValue = projectDropdown.value;
-  const newSelection = projects.find((p) => p.getTitle() === selectedValue);
-  if (newSelection) {
-    selectedProject = newSelection;
-  };
-  updateTaskList(selectedProject);
-});
+console.log(myProjects.getSelected().getTitle);
 
 // add new task button
 btnAddTask.addEventListener('click', function() {
@@ -41,10 +23,11 @@ btnAddTask.addEventListener('click', function() {
       document.querySelector("input[name='task-description']").value,
       format(new Date(document.querySelector("input[name='due-date']").value), "MM/dd/yyyy"),
       document.querySelector("select[name='priority']").value,
-      selectedProject.getTitle()
+      myProjects.getSelected().getTitle()
     );
-    selectedProject.addTask(newTask);
-    updateTaskList(selectedProject);
+    console.log('did it')
+    myProjects.getSelected().addTask(newTask);
+    updateTaskList(myProjects.getSelected());
     newTaskForm.reset();
     setTodaysDate();
   }

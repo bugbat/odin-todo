@@ -14,3 +14,22 @@ export function taskList(title) {
   }
   return { getTitle, getTasks, addTask, removeTask }
 }
+
+function projectList() {
+  let list = [taskList('First'), taskList('Second')];
+  let selected = list[0];
+
+  const getSelected = () => selected;
+  const getList = () => list;
+  
+  function setSelection(project) {
+    selected = project;
+    console.log('selected new: ', project.getTitle(), selected.getTitle())
+  }
+  function addProject(project) {
+    list.push(project);
+  }
+  return { getList, getSelected, setSelection, addProject }
+}
+
+export const myProjects = projectList();
