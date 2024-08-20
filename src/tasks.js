@@ -29,7 +29,10 @@ function projectList() {
   function addProject(project) {
     list.push(project);
   }
-  return { getList, getSelected, setSelection, addProject }
+  function saveList() {
+    console.log(this)
+  }
+  return { getList, getSelected, setSelection, addProject, saveList }
 }
 
 export const myProjects = projectList();

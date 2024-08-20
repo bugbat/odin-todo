@@ -13,8 +13,6 @@ setTodaysDate();
 updateProjectDropdown();
 updateTaskList(myProjects.getSelected());
 
-console.log(myProjects.getSelected().getTitle);
-
 // add new task button
 btnAddTask.addEventListener('click', function() {
   if (document.querySelector("input[name='task-title']").value) {
