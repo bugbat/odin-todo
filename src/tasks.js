@@ -24,13 +24,9 @@ function projectList() {
   
   function setSelection(project) {
     selected = project;
-    console.log('selected new: ', project.getTitle(), selected.getTitle())
   }
   function addProject(project) {
     list.push(project);
-  }
-  function saveList() {
-    console.log(this)
   }
   return { getList, getSelected, setSelection, addProject, saveList }
 }

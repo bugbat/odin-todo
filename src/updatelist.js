@@ -56,9 +56,7 @@ function setDropdownEvents() {
   projectDropdown.addEventListener('change', function () {
     const selectedValue = projectDropdown.value;
     const newSelection = myProjects.getList().find((p) => p.getTitle() === selectedValue);
-    console.log(newSelection.getTitle())
     if (newSelection) {
-      console.log('new selection set')
       myProjects.setSelection(newSelection);
     };
     updateTaskList(myProjects.getSelected());

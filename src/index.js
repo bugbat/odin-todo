@@ -23,7 +23,6 @@ btnAddTask.addEventListener('click', function() {
       document.querySelector("select[name='priority']").value,
       myProjects.getSelected().getTitle()
     );
-    console.log('did it')
     myProjects.getSelected().addTask(newTask);
     updateTaskList(myProjects.getSelected());
     newTaskForm.reset();
